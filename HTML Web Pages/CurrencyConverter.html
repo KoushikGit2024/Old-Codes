@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Currency Converter</title>
+    <style>
+        td,th{
+            justify-content:end;
+        }
+    </style>
+</head>
+<body>
+    <div id="mBlock">
+        <div id="container"style="background:;">
+            <table id="">
+                <tr>
+                    <th><label for="baseCurr">Base Currency :</label></th>
+                    <td><select name="baseCurr" id="baseCurr"></select></td>
+                    <th><label for="input">Enter the :</label></th>
+                    <td><input type="number" id="input" name="input" id="input"></td>
+                </tr>
+                <tr>
+                    <th><label for="">Converted Currency :</label></th>
+                    <td><select name="inpCur" id="inpCur"></select></td>
+                    <th><label for="conValue">Enter the :</label></th>
+                    <td><input type="number" name="conValue" id="conValue"  readonly></td>
+                </tr>
+                <tr>
+                    <th colspan="2"><label for="exRate">Exchange Rate :</label></th>
+                    <td colspan="2"><input type="text" id="exRate" style="text-align: center;" placeholder="------------" readonly></td>
+                </tr>
+                <tr>
+                    <th colspan="4"><button onclick="calculate()">Calculate</button></th>
+                </tr>
+            </table>
+            
+            
+        </div>
+    </div>
+    <script>
+        const urlCurr="https://open.er-api.com/v6/latest/USD";
+        let data,CurObjects,CurNames;
+        let options=document.getElementsByTagName("select");
+        let allInp=document.getElementsByTagName("input");
+        const getData = async ()=>{
+            try{   
+                promise=await fetch(urlCurr);
+                data=await promise.json();
+                CurObjects=data.rates;
+                CurNames=Object.keys(CurObjects);    
+                let size=Object.keys(CurObjects).length;
+                let Choise=document.getElementsByTagName("select");
+                for(let i=0;i<size;i++){
+                    let ele=document.createElement("option");
+                    Choise[0].appendChild(ele);
+                    ele.setAttribute("value",CurNames[i]);
+                    ele.innerText=CurNames[i];
+                    ele=document.createElement("option");
+                    Choise[1].appendChild(ele);
+                    ele.setAttribute("value",CurNames[i]);
+                    ele.innerText=CurNames[i];
+                }
+            } catch(err){
+                alert("Didn't able to connect with the internet.")
+            }
+        }
+        getData().then(()=>{
+            console.log("API fetched successfully");
+        });
+        function calculate(){
+            if(allInp[0].value==''){
+                alert("Error : Enter some value to convert!!!");
+            } else {
+                let conFactor=1,num1=parseFloat(CurObjects[options[0].value]),num2=parseFloat(CurObjects[options[1].value]),inp=parseFloat(allInp[0].value);
+                conFactor=parseFloat(num2/num1);
+                allInp[1].value=conFactor.toFixed(6)*inp;
+                allInp[2].value= `1 ${options[0].value} = ${conFactor} ${options[1].value}`;
+            }
+        }
+        
+    </script>
+</body>
+</html>

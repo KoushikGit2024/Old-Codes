@@ -1,0 +1,1010 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ultimate_Tic_Tac_Tow</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/fontawesome.min.css" integrity="sha512-B46MVOJpI6RBsdcU307elYeStF2JKT87SsHZfRSkjVi4/iZ3912zXi45X5/CBr/GbCyLx6M1GQtTKYRd52Jxgw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="style.css">
+    <style>
+body{
+    background: #000;
+    padding: 0;
+    margin: 0;
+}
+#pageCover{
+    background: url('https://www.thespruce.com/thmb/vfpvoVhLdrau5xbacKUh-x6xsUg=/750x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/pictures-of-purple-flowers-4061771-05-8b125acb27914c819181c5c0da7fc110_1-4c0689dd22014d678e585be34c79445a.jpg');
+    background-color: transparent;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    background-size: cover;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    right: 0;
+    top: 0;
+    z-index: 0;
+}
+#welcomeText{
+    font-family:'Times New Roman';
+    font-size: 2rem;
+    color: chartreuse;
+}
+.blurGlass{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 0;
+    border: 2px rgb(127, 123, 123) solid;
+    border-radius: 1rem;
+    border-color: rgb(116, 106, 106);
+    padding: 2rem;
+    background-color: rgba(255,255,255,0.5);
+    backdrop-filter: blur;
+    height: 65vh;
+    width: 65vh;
+}
+.blurGlass:hover,.exSBlock:hover,.exOwnTable:hover{
+    transition: all 1s ease-in-out 0s;
+    transform: translate(-5px,-2.5px);
+    box-shadow: 10px 5px 5px rgb(45, 42, 42);
+}
+#welcomeTag{
+    display: inline;
+} 
+#example{
+    border: 1vh solid cornflowerblue;
+    border-radius: 1vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+}
+.exMBlock{
+    background-color: antiquewhite;
+    min-height: 20vh;
+    min-width: 20vh;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+}
+.exSTable{
+    background-color: transparent;
+    border:1px solid aquamarine;
+}
+.exSBlock{
+    height: 5vh;
+    width: 5vh;
+    border-radius: 1vh;
+    text-align: center;
+    background-color: #c1c1c1;
+    box-shadow: 20px 20px 60px #00000041,inset -20px -20px 60px #ffffff40;
+}
+.exOwnTable{
+    font-size: 7rem;
+    border-radius: 1vh;
+    text-align: center;
+    height: 17vh;
+    width: 17vh;
+    border:1px solid aquamarine;
+    background-color: #c1c1c1;
+    box-shadow: 20px 20px 60px #00000041,inset -20px -20px 60px #ffffff40;
+}
+#tutorial{
+    display: inline;
+    background-color: #dda90c;
+    border: 1vh rgb(255, 111, 0) dashed;
+    border-radius: 2vh;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: 3vh;
+    color: white;
+    text-shadow: 5px 5px 3px rebeccapurple;
+    width: 14vh;
+    font-stretch: expanded;   
+}
+a:link{
+    text-decoration: none;
+    color: green;
+}
+a:visited{
+    text-decoration: none;
+    color:bisque
+}
+#secondPage{
+    margin-top: 10px;
+    border: 2px salmon dotted;
+    background-color: cadetblue;
+    color:chartreuse;
+    border-radius: 2rem;
+    display: inline;
+}
+/* all in first page ends here */
+#inputPage{
+    z-index: -10;
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width:100vw;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    background-color: #1E201E;
+}
+#inputForm{
+    display: flex;
+    flex-direction: column;
+    background-color: #3c3d3795;
+    color: #3c3d3743;
+    padding: 2vh;
+    height: 50vh;
+    width: 50vh;
+    border-radius: 5vh;
+    box-shadow: 10px 10px 30px #9f9797a9, -10px -10px 30px #ffffff40;
+}
+#submitInfo{
+    margin-top: 2rem;
+    text-align: center;
+    padding-top: 0.5rem;
+    visibility: hidden;
+    height: 2rem;
+    width: 4rem;
+    border-radius: 1rem;
+    color: #1E201E;
+    background-color: #dda90c;
+    align-self: center;
+}
+#inputForm:hover{
+    color: #fff;
+    background-color: #3c3d37;
+    box-shadow: 20px 20px 60px #9f9797a9, -20px -20px 60px #ffffff40;
+    transition: all ease-in-out 1s;
+}
+#plInfo{
+    font-style:italic;
+    background-color: beige;
+    border-radius: 2rem;
+    padding: 2px;
+    color: #000;
+    font-weight: bolder;
+}
+label{
+    font-size: 0.75rem;
+}
+/* all in second page ends here */
+#mainPage{
+    z-index: -10;
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width:100vw;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    background-color: #161616;
+    overflow: hidden;
+}
+#nameShower{
+    position: fixed;
+    top: 5vh;
+    border-radius: 2vh;
+    padding: 0.5vh;
+    padding-left: 2vh;
+    padding-right: 2vhs;
+    font-size: 3vh;
+    background-color: white;
+}
+#neonBlock{
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-image: conic-gradient(from var(--gradient-angle),#ff0000,#ff7300,#fffb00,#48ff00,#00ffd5,#002bff,#ff00c8,#ff0000);
+    border-radius: 5vh;
+    width: 80vh;
+    height: 80vh;
+    filter: blur(1.5rem);
+    animation: rotation 5s linear infinite;
+}
+@property --gradient-angle{
+    syntax: "<angle>";
+    initial-value: 0deg; 
+    inherits: false;
+}
+@keyframes rotation {
+    0%{--gradient-angle:0deg;}
+    100%{--gradient-angle:360deg;}
+}
+#holdingBlock{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    position: inherit;
+    padding: 1px;
+    border: none;
+    outline: none;
+    color: #000;
+    background-color: #161616;
+    cursor: pointer;
+    z-index: 0;
+    width: 79vh;
+    height: 79vh;
+    border-radius: 5vh;
+}
+#MTable{
+    border:0px #c1c1c1 solid;
+    border-radius: 1vh;
+}
+.MBlock{
+    display:inline-flex;
+    justify-content: center;
+    align-items: center; 
+    height: 18vh;
+    width: 18vh;
+    border-radius: 1vh;
+    margin: 1.5vh;
+}
+.STable{
+    position: absolute;
+    z-index: 0;
+    height: 18vh;
+    width: 18vh;
+    margin: 1vh;
+    display:flex;
+    background-color: #161616;
+    justify-content: center;
+    align-items: center;
+}
+tbody{
+    background-color: transparent;
+    padding-left: 0;
+    margin-right: 0;
+}
+.SBlock{
+    height: 5.5vh;
+    width: 5.5vh;
+    margin: 2vh;
+    border-radius: 1vh;
+    color: #fff;
+    font-size: 4.5vh;
+    text-shadow: 0 0 0.5vh #fff,
+    0 0 1vh #fff, 0 0 3vh #0073e6,
+    0 0 3.5vh #0073e6, 0 0 4vh #0073e6,
+    0 0 4.5vh #0073e6, 0 0 5vh #0073e6;
+    text-align: center;
+    user-select: none;
+    background-color: rgba(255,255,255,0.1);
+    backdrop-filter: blur;
+}
+#tempTable{
+    position: absolute;
+    z-index: -10; 
+}
+.tempBlock{
+    display:inline-flex;
+    justify-content: center;
+    align-items: center; 
+    height: 19vh;
+    width: 19vh;
+    border-radius: 1vh;
+    margin: 1.12vh;
+    animation: rotation 4s linear infinite;
+}
+.access{
+    background-image: conic-gradient(from var(--gradient-angle),transparent,white); 
+}
+.ownedBlock{
+    position: absolute;
+    z-index: -10;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    height: 18vh;
+    width: 18vh;
+    border-radius: 1vh;
+    color: #fff;
+    font-size: 12vh;
+    text-shadow: 0 0 0.5vh #fff,
+    0 0 1vh #fff, 0 0 3vh #0073e6,
+    0 0 3.5vh #0073e6, 0 0 4vh #0073e6,
+    0 0 4.5vh #0073e6, 0 0 5vh #0073e6;
+    gap: 0.8vh;
+    background-color: rgba(255,255,255,0.1);
+}
+#endGame{
+    position: fixed;
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #222;
+    height: 100vh;
+    width: 100vw;
+    top: 0;
+    left: 0;
+    z-index: -10;
+    transition: all 2s ease-in-out 0.5s;
+}
+#winner{
+    display: block;
+    background-color: rgb(199, 146, 61);
+    border-radius: 1vh;
+    margin-bottom: 10vh;
+    font-size: 5vh;
+}
+#replay{
+    display: block;
+    border-radius: 1vh;
+    background-color: rgb(27, 146, 170);
+    font-size: 4vh;
+}
+    </style>
+</head>
+<body>
+    <div id="pageCover">
+
+        <div id="welcomeTag">
+            <p id="welcomeText">
+                Welcome To The Game World of Koushik
+                <br>
+                Mega Tic-Tac-Tow
+            </p>
+        </div>
+        <div class="blurGlass">
+            <table id="example" border="1px">
+                <tr>
+                    <td class="exMBlock">
+                        <table class="exSTable" border="1px" >
+                            <tr>
+                                <td class="exSBlock">X</td>
+                                <td class="exSBlock">O</td>
+                                <td class="exSBlock">O</td>
+                            </tr>
+                            <tr>
+                                <td class="exSBlock"></td>
+                                <td class="exSBlock">X</td>
+                                <td class="exSBlock">X</td>
+                            </tr>
+                            <tr>
+                                <td class="exSBlock">O</td>
+                                <td class="exSBlock"></td>
+                                <td class="exSBlock">O</td>
+                            </tr>
+                        </table>
+                    </td>
+                    <td class="exMBlock">
+                        <div class="exOwnTable">X</div>
+                    </td>
+                    <td class="exMBlock">
+                        <table class="exSTable" border="1px">
+                            <tr>
+                                <td class="exSBlock">O</td>
+                                <td class="exSBlock">X</td>
+                                <td class="exSBlock">X</td>
+                            </tr>
+                            <tr>
+                                <td class="exSBlock">X</td>
+                                <td class="exSBlock">O</td>
+                                <td class="exSBlock"></td>
+                            </tr>
+                            <tr>
+                                <td class="exSBlock">O</td>
+                                <td class="exSBlock">X</td>
+                                <td class="exSBlock">X</td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="exMBlock">
+                        <div class="exOwnTable">O</div>
+                    </td>
+                    <td class="exMBlock">
+                        <table class="exSTable" border="1px">
+                            <tr>
+                                <td class="exSBlock">O</td>
+                                <td class="exSBlock">O</td>
+                                <td class="exSBlock">X</td>
+                            </tr>
+                            <tr>
+                                <td class="exSBlock">O</td>
+                                <td class="exSBlock"></td>
+                                <td class="exSBlock">X</td>
+                            </tr>
+                            <tr>
+                                <td class="exSBlock">X</td>
+                                <td class="exSBlock">X</td>
+                                <td class="exSBlock"></td>
+                            </tr>
+                        </table>
+                    </td>
+                    <td class="exMBlock">
+                        <div class="exOwnTable">-</div>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="exMBlock">
+                        <div class="exOwnTable">X</div>
+                    </td>
+                    <td class="exMBlock">
+                        <table class="exSTable" border="1px">
+                            <tr>
+                                <td class="exSBlock">X</td>
+                                <td class="exSBlock">X</td>
+                                <td class="exSBlock"></td>
+                            </tr>
+                            <tr>
+                                <td class="exSBlock">O</td>
+                                <td class="exSBlock">X</td>
+                                <td class="exSBlock">O</td>
+                            </tr>
+                            <tr>
+                                <td class="exSBlock">O</td>
+                                <td class="exSBlock"></td>
+                                <td class="exSBlock"></td>
+                            </tr>
+                        </table>
+                    </td>
+                    <td class="exMBlock">
+                        <table class="exSTable" border="1px">
+                            <tr>
+                                <td class="exSBlock"></td>
+                                <td class="exSBlock">O</td>
+                                <td class="exSBlock">O</td>
+                            </tr>
+                            <tr>
+                                <td class="exSBlock">X</td>
+                                <td class="exSBlock">X</td>
+                                <td class="exSBlock"></td>
+                            </tr>
+                            <tr>
+                                <td class="exSBlock"></td>
+                                <td class="exSBlock">O</td>
+                                <td class="exSBlock"></td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <div>
+            <aside id="tutorial">
+                <a href="https://www.youtube.com/embed/_Na3a1ZrX7c" id="trlLink" target="_blank">Don't know how to play? watch the tutorial -></a>
+            </aside>
+        </div>
+        <button id="secondPage">
+            <pre>Ready to play 
+let's Go</pre>
+        </button>
+    </div>    
+    
+    <div id="inputPage">
+        <form id="inputForm" name="inpFrom" action="#" onsubmit="myFunc();">
+            <fieldset>
+                <legend><p id="plInfo">Players' Information</p></legend>
+                <table id="">
+                    <tr>
+                        <td>
+                            <label for="fname">First Player Name:&nbsp;</label>
+                        </td>
+                        <td>
+                            <input type="text" name="fname" id="fname" placeholder="Get's First Move" required>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <label for="fsymbol">First Player's Symbol:&nbsp;</label>
+                        </td>
+                        <td>
+                            <select name="fsymbol" id="fsymbol">
+                                <option value="@">@</option>
+                                <option value="#">#</option>
+                                <option value="X">X</option>
+                                <option value="O">O</option>
+                                <option value="$">$</option>
+                                <option value="%">%</option>
+                                <option value="&">&</option>
+                                <option value="*">*</option>
+                                <option value="♠">♠</option>
+                                <option value="♣">♣</option>
+                                <option value="♦">♦</option>
+                                <option value="♥">♥</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <label for="sname">Second Player Name:&nbsp;</label>
+                        </td>
+                        <td>
+                            <input type="text" name="sname" id="sname" placeholder="Get's Time To Analyse" required>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <label for="ssymbol">Second Player's Symbol:&nbsp;</label>
+                        </td>
+                        <td>
+                            <select name="ssymbol" id="ssymbol">
+                                <option value="#">#</option>
+                                <option value="@">@</option>
+                                <option value="X">X</option>
+                                <option value="O">O</option>
+                                <option value="$">$</option>
+                                <option value="%">%</option>
+                                <option value="&">&</option>
+                                <option value="*">*</option>
+                                <option value="♠">♠</option>
+                                <option value="♣">♣</option>
+                                <option value="♦">♦</option>
+                                <option value="♥">♥</option>
+                            </select>
+                        </td>
+                    </tr>
+                </table>
+            </fieldset>
+            <button id="submitInfo" name="submit" onclick="myFunc();">SUBMIT</button>
+        </form>
+    </div>
+     
+    <div id="mainPage">
+        <div id="neonBlock">
+        </div>
+        <div id="holdingBlock">
+            <div id="nameShower"></div>
+            <table id="tempTable">
+                <tr>
+                    <td class="tempBlock access" aria-rowindex="1"></td>
+                    <td class="tempBlock access" aria-rowindex="1"></td>
+                    <td class="tempBlock access" aria-rowindex="1"></td>
+                </tr>
+                <tr>
+                    <td class="tempBlock access" aria-rowindex="1"></td>
+                    <td class="tempBlock access" aria-rowindex="1"></td>
+                    <td class="tempBlock access" aria-rowindex="1"></td>
+                </tr>
+                <tr>
+                    <td class="tempBlock access" aria-rowindex="1"></td>
+                    <td class="tempBlock access" aria-rowindex="1"></td>
+                    <td class="tempBlock access" aria-rowindex="1"></td>
+                </tr>
+            </table>
+            <table id="MTable" border="5vh">
+                <tr>
+                    <td class="MBlock" aria-colindex="0">
+                        <div class="ownedBlock"></div>
+                        <table class="STable">
+                            <tbody>
+                                <tr>
+                                    <td class="SBlock"></td>
+                                    <td class="SBlock"></td>
+                                    <td class="SBlock"></td>
+                                </tr>
+                                <tr>
+                                    <td class="SBlock"></td>
+                                    <td class="SBlock"></td>
+                                    <td class="SBlock"></td>
+                                </tr>
+                                <tr>
+                                    <td class="SBlock"></td>
+                                    <td class="SBlock"></td>
+                                    <td class="SBlock"></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </td>
+                    <td class="MBlock" aria-colindex="1">
+                        <div class="ownedBlock"></div>
+                        <table class="STable">
+                            <tbody>
+                                <tr>
+                                    <td class="SBlock"></td>
+                                    <td class="SBlock"></td>
+                                    <td class="SBlock"></td>
+                                </tr>
+                                <tr>
+                                    <td class="SBlock"></td>
+                                    <td class="SBlock"></td>
+                                    <td class="SBlock"></td>
+                                </tr>
+                                <tr>
+                                    <td class="SBlock"></td>
+                                    <td class="SBlock"></td>
+                                    <td class="SBlock"></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </td>
+                    <td class="MBlock" aria-colindex="2">
+                        <div class="ownedBlock"></div>
+                        <table class="STable">
+                            <tbody>
+                                <tr>
+                                    <td class="SBlock"></td>
+                                    <td class="SBlock"></td>
+                                    <td class="SBlock"></td>
+                                </tr>
+                                <tr>
+                                    <td class="SBlock"></td>
+                                    <td class="SBlock"></td>
+                                    <td class="SBlock"></td>
+                                </tr>
+                                <tr>
+                                    <td class="SBlock"></td>
+                                    <td class="SBlock"></td>
+                                    <td class="SBlock"></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="MBlock" aria-colindex="3">
+                        <div class="ownedBlock"></div>
+                        <table class="STable">
+                            <tbody>
+                                <tr>
+                                    <td class="SBlock"></td>
+                                    <td class="SBlock"></td>
+                                    <td class="SBlock"></td>
+                                </tr>
+                                <tr>
+                                    <td class="SBlock"></td>
+                                    <td class="SBlock"></td>
+                                    <td class="SBlock"></td>
+                                </tr>
+                                <tr>
+                                    <td class="SBlock"></td>
+                                    <td class="SBlock"></td>
+                                    <td class="SBlock"></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </td>
+                    <td class="MBlock" aria-colindex="4">
+                        <div class="ownedBlock"></div>
+                        <table class="STable">
+                            <tbody>
+                                <tr>
+                                    <td class="SBlock"></td>
+                                    <td class="SBlock"></td>
+                                    <td class="SBlock"></td>
+                                </tr>
+                                <tr>
+                                    <td class="SBlock"></td>
+                                    <td class="SBlock"></td>
+                                    <td class="SBlock"></td>
+                                </tr>
+                                <tr>
+                                    <td class="SBlock"></td>
+                                    <td class="SBlock"></td>
+                                    <td class="SBlock"></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </td>
+                    <td class="MBlock" aria-colindex="5">
+                        <div class="ownedBlock"></div>
+                        <table class="STable">
+                            <tbody>
+                                <tr>
+                                    <td class="SBlock"></td>
+                                    <td class="SBlock"></td>
+                                    <td class="SBlock"></td>
+                                </tr>
+                                <tr>
+                                    <td class="SBlock"></td>
+                                    <td class="SBlock"></td>
+                                    <td class="SBlock"></td>
+                                </tr>
+                                <tr>
+                                    <td class="SBlock"></td>
+                                    <td class="SBlock"></td>
+                                    <td class="SBlock"></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="MBlock" aria-colindex="6">
+                        <div class="ownedBlock"></div>
+                        <table class="STable">
+                            <tbody>
+                                <tr>
+                                    <td class="SBlock"></td>
+                                    <td class="SBlock"></td>
+                                    <td class="SBlock"></td>
+                                </tr>
+                                <tr>
+                                    <td class="SBlock"></td>
+                                    <td class="SBlock"></td>
+                                    <td class="SBlock"></td>
+                                </tr>
+                                <tr>
+                                    <td class="SBlock"></td>
+                                    <td class="SBlock"></td>
+                                    <td class="SBlock"></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </td>
+                    <td class="MBlock" aria-colindex="7">
+                        <div class="ownedBlock"></div>
+                        <table class="STable">
+                            <tbody>
+                                <tr>
+                                    <td class="SBlock"></td>
+                                    <td class="SBlock"></td>
+                                    <td class="SBlock"></td>
+                                </tr>
+                                <tr>
+                                    <td class="SBlock"></td>
+                                    <td class="SBlock"></td>
+                                    <td class="SBlock"></td>
+                                </tr>
+                                <tr>
+                                    <td class="SBlock"></td>
+                                    <td class="SBlock"></td>
+                                    <td class="SBlock"></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </td>
+                    <td class="MBlock" aria-colindex="8">
+                        <div class="ownedBlock"></div>
+                        <table class="STable">
+                            <tbody>
+                                <tr>
+                                    <td class="SBlock"></td>
+                                    <td class="SBlock"></td>
+                                    <td class="SBlock"></td>
+                                </tr>
+                                <tr>
+                                    <td class="SBlock"></td>
+                                    <td class="SBlock"></td>
+                                    <td class="SBlock"></td>
+                                </tr>
+                                <tr>
+                                    <td class="SBlock"></td>
+                                    <td class="SBlock"></td>
+                                    <td class="SBlock"></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+
+    <div id="endGame">
+        <div id="winner">
+            <i class="fa-solid fa-trophy"></i>
+            <div id="statement" style="display: inline;">
+            </div>
+            <i class="fa-solid fa-champagne-glasses"></i>
+        </div>
+        <form><button id="replay" onclick="location.reload()">Replay --></button></form>
+    </div>
+    <script src="javaScript.js"></script>
+    <script>
+        //====================Declarations====================
+var btnNext=document.getElementById("secondPage");
+var page1=document.getElementById("pageCover");
+var page2=document.getElementById("inputPage");
+var page3=document.getElementById("mainPage");
+var submit=document.getElementById("submitInfo");
+var plname,symbol;
+//-------------Page1-------------
+var inpfname=document.getElementById("fname");
+var inpfsymbol=document.getElementById("fsymbol");
+var inpsname=document.getElementById("sname");
+var inpssymbol=document.getElementById("ssymbol"); 
+//-------------Page2-------------
+var plShower=document.getElementById("nameShower");
+var mainBlocks=document.getElementsByClassName("MBlock");
+var tables=document.getElementsByClassName("STable");
+var subBlocks=document.getElementsByClassName("SBlock");
+var accBlocks=document.getElementsByClassName("tempBlock");
+var ownedBlocks=document.getElementsByClassName("ownedBlock");
+//-------------Page3-------------
+var page4=document.getElementById("endGame");
+//-------------Page4-------------
+//====================Initializations====================
+for(let i=0;i<81;i++){
+    subBlocks[i].ariaColIndex=i%9;
+    ownedBlocks[Math.floor(i/9)].style.zIndex=-10;
+}
+//====================Introducing Functions====================
+btnNext.onclick=()=>{
+    page1.style.zIndex=-1;
+    page1.style.display="none";
+    page2.style.display="flex";
+    page2.style.zIndex=1;
+}
+function inputChecker(){
+    if(inpfname.value==inpsname.value||inpfsymbol.value==inpssymbol.value){
+        submit.style.visibility="hidden";
+        if(inpfsymbol.value==inpssymbol.value){
+            alert("The symbols must be different");
+        }
+        else if(inpfname.value==inpsname.value){
+            alert("Two players must have to different name");
+        }
+    }
+    else{
+        submit.style.visibility="visible";
+    }
+}
+inpfname.oninput=()=>{
+    inputChecker();
+}
+inpsname.oninput=()=>{
+    inputChecker();
+}
+inpfsymbol.onchange=()=>{
+    inputChecker();
+}
+inpssymbol.onchange=()=>{
+    inputChecker();
+}
+submit.onclick=()=>{
+    myFunc();
+}
+function myFunc(){
+    event.preventDefault();
+    console.log("Inputs taken successs");
+    plname=[inpfname.value,inpsname.value];
+    symbol=[inpfsymbol.value,inpssymbol.value];
+    page2.style.zIndex=-10;
+    page2.style.display="none";
+    page3.style.display="flex";
+    page3.style.zIndex=10;
+    plShower.textContent="It's "+plname[0]+"'s turn";
+}
+//====================Main Code for Game====================
+var  mIndex=0,sIndex=0,presIndex=0,premIndex=0,moveCount=0,move=0,sBlkCount=[0,0,0,0,0,0,0,0,0],mBlkCount=0;
+var Boolean, allAcc=true;
+for(let i=0;i<81;i++){
+    subBlocks[i].onclick=()=>{
+        if(accBlocks[Math.floor(i/9)].ariaRowIndex==1 && subBlocks[i].textContent==""){
+            sIndex=Number(subBlocks[i].ariaColIndex);
+            mIndex=Number(mainBlocks[Math.floor(i/9)].ariaColIndex);
+            if(ownedBlocks[sIndex].style.zIndex!=-10){
+                allEnable(1);
+                allAcc=true;
+            } else {
+                if(allAcc){
+                    allAcc=false;
+                    allEnable(0);
+                    
+                } else {
+                    accBlocks[presIndex].ariaRowIndex=0;
+                    accBlocks[presIndex].classList.remove("access");
+                }
+                accBlocks[sIndex].ariaRowIndex=1;
+                accBlocks[sIndex].classList.add("access");
+            }
+            subBlocks[9*mIndex+sIndex].textContent=symbol[move%2];
+            sBlkCount[mIndex]++;
+            subChecker(mIndex);
+            if(ownedBlocks[sIndex].style.zIndex==-10){
+                accBlocks[sIndex].ariaRowIndex=1;
+                accBlocks[sIndex].classList.add("access")
+                premIndex=mIndex;
+                presIndex=sIndex;
+            }
+            move++;
+            plShower.textContent="It's "+plname[move%2]+"'s turn";
+        }
+    }
+}
+function allEnable(a){
+    if(a==1){
+        for(let i=0;i<9;i++){
+            if(accBlocks[i].ariaRowIndex==0 && ownedBlocks[i].style.zIndex==-10){
+                accBlocks[i].ariaRowIndex=1;
+                accBlocks[i].classList.add("access");
+            }
+        }
+    }else if(a==0){
+        for(let i=0;i<9;i++){
+            if(accBlocks[i].ariaRowIndex==1 && ownedBlocks[i].style.zIndex==-10 || ownedBlocks[i].style.zIndex==10){
+                if(ownedBlocks[i].style.zIndex==10){
+                    tables[i].style.visibility="hidden";
+                }
+                accBlocks[i].ariaRowIndex=0;
+                accBlocks[i].classList.remove("access");
+            }
+        }
+    }
+}
+function subChecker(BIndex){
+    if(sBlkCount[BIndex]<=9){
+        if(subBlocks[9*BIndex+0].textContent==subBlocks[9*BIndex+1].textContent && subBlocks[9*BIndex+1].textContent==subBlocks[9*BIndex+2].textContent && subBlocks[9*BIndex+0].textContent!=""){
+            bigBlockProvider(BIndex);
+        } else if(subBlocks[9*BIndex+3].textContent==subBlocks[9*BIndex+4].textContent && subBlocks[9*BIndex+4].textContent==subBlocks[9*BIndex+5].textContent && subBlocks[9*BIndex+3].textContent!=""){
+            bigBlockProvider(BIndex);
+        } else if(subBlocks[9*BIndex+6].textContent==subBlocks[9*BIndex+7].textContent && subBlocks[9*BIndex+7].textContent==subBlocks[9*BIndex+8].textContent && subBlocks[9*BIndex+6].textContent!=""){
+            bigBlockProvider(BIndex);
+        } else if(subBlocks[9*BIndex+0].textContent==subBlocks[9*BIndex+3].textContent && subBlocks[9*BIndex+3].textContent==subBlocks[9*BIndex+6].textContent && subBlocks[9*BIndex+0].textContent!=""){
+            bigBlockProvider(BIndex);
+        } else if(subBlocks[9*BIndex+1].textContent==subBlocks[9*BIndex+4].textContent && subBlocks[9*BIndex+4].textContent==subBlocks[9*BIndex+7].textContent && subBlocks[9*BIndex+1].textContent!=""){
+            bigBlockProvider(BIndex);
+        } else if(subBlocks[9*BIndex+2].textContent==subBlocks[9*BIndex+5].textContent && subBlocks[9*BIndex+5].textContent==subBlocks[9*BIndex+8].textContent && subBlocks[9*BIndex+2].textContent!=""){
+            bigBlockProvider(BIndex);
+        } else if(subBlocks[9*BIndex+0].textContent==subBlocks[9*BIndex+4].textContent && subBlocks[9*BIndex+4].textContent==subBlocks[9*BIndex+8].textContent && subBlocks[9*BIndex+0].textContent!=""){
+            bigBlockProvider(BIndex);
+        } else if(subBlocks[9*BIndex+2].textContent==subBlocks[9*BIndex+4].textContent && subBlocks[9*BIndex+4].textContent==subBlocks[9*BIndex+6].textContent && subBlocks[9*BIndex+2].textContent!=""){
+            bigBlockProvider(BIndex);
+        }else if(sBlkCount[BIndex]==9){
+            bigBlockProvider(BIndex);
+        }
+    } 
+    
+}
+function bigBlockProvider(BIndex){
+    mBlkCount++;
+    if(sBlkCount[BIndex]==9){
+        ownedBlocks[BIndex].textContent="-";
+        alert("There is a draw in block no: "+Number(BIndex+1));
+    } else {
+        ownedBlocks[BIndex].textContent=symbol[move%2];
+        alert(plname[move%2] + " owned block no: "+Number(BIndex+1));
+    }
+    ownedBlocks[BIndex].style.zIndex=10;
+    tables[BIndex].style.visibility="hidden";
+    accBlocks[BIndex].classList.remove("access");
+    if(sIndex==mIndex){
+        allEnable(1);
+        allAcc=true;
+    }
+    mainChecker();
+}
+function mainChecker(){
+    if(mBlkCount<=9){
+        if(ownedBlocks[0].textContent==ownedBlocks[1].textContent && ownedBlocks[1].textContent==ownedBlocks[2].textContent && ownedBlocks[0].textContent!="" && ownedBlocks[0].textContent!="-"){
+            winner();
+        } else if(ownedBlocks[3].textContent==ownedBlocks[4].textContent && ownedBlocks[4].textContent==ownedBlocks[5].textContent && ownedBlocks[3].textContent!="" && ownedBlocks[3].textContent!="-"){
+            winner();
+        } else if(ownedBlocks[6].textContent==ownedBlocks[7].textContent && ownedBlocks[7].textContent==ownedBlocks[8].textContent && ownedBlocks[6].textContent!="" && ownedBlocks[6].textContent!="-"){
+            winner();
+        } else if(ownedBlocks[0].textContent==ownedBlocks[3].textContent && ownedBlocks[3].textContent==ownedBlocks[6].textContent && ownedBlocks[0].textContent!="" && ownedBlocks[0].textContent!="-"){
+            winner();
+        } else if(ownedBlocks[1].textContent==ownedBlocks[4].textContent && ownedBlocks[4].textContent==ownedBlocks[7].textContent && ownedBlocks[1].textContent!="" && ownedBlocks[1].textContent!="-"){
+            winner();
+        } else if(ownedBlocks[2].textContent==ownedBlocks[5].textContent && ownedBlocks[5].textContent==ownedBlocks[8].textContent && ownedBlocks[2].textContent!="" && ownedBlocks[2].textContent!="-"){
+            winner();
+        } else if(ownedBlocks[0].textContent==ownedBlocks[4].textContent && ownedBlocks[4].textContent==ownedBlocks[8].textContent && ownedBlocks[0].textContent!="" && ownedBlocks[0].textContent!="-"){
+            winner();
+        } else if(ownedBlocks[2].textContent==ownedBlocks[4].textContent && ownedBlocks[4].textContent==ownedBlocks[6].textContent && ownedBlocks[2].textContent!="" && ownedBlocks[2].textContent!="-"){
+            winner();
+        }else if(mBlkCount==9){
+            setTimeout(()=>{winner();},2000);
+        }
+    } 
+}
+function winner(){
+    if(mIndex==sIndex)
+        accBlocks[sIndex].classList.remove("access");
+    let temp1=document.getElementById("statement");
+    if(mBlkCount<9){
+        temp1.outerText= plname[move%2]+" won the match!!!";
+    } else {
+        temp1.outerText= "Draw match";
+        let temp2=document.getElementsByTagName("i");
+        temp2[0].style.display="none";
+        temp2[1].style.display="none";
+    }
+    page3.style.zIndex=-10;
+    page3.style.display="none";
+    page4.style.display="flex";
+    page4.style.zIndex=10;
+}  
+    </script>
+</body>
+</html>
