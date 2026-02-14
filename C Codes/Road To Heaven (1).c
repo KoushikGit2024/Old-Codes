@@ -18,7 +18,7 @@ void timer(int t);
 void protector();
 void timer(int t);
 void heaven();
-int ques(int n,i);
+int ques(int n,int i);
 void hell();
 int main()
 {
@@ -346,7 +346,7 @@ void heaven()
         hell();
     }
 }
-int ques(int n,i)
+int ques(int n,int i)
 {
     int right=0,opt;
     if(n==0)

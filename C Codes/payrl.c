@@ -21,7 +21,7 @@ void delete();
 void dspl();
 int dspl_opt();
 void pntRcrdAll(struct emply *now);
-void pntRcrdStd(struct emply *now,field[11]);
+void pntRcrdStd(struct emply *now,int field[11]);
 void main1();
 void main()
 {
@@ -476,7 +476,7 @@ void pntRcrdAll(struct emply *now)//Print Record All
     printf("\t|%d\t|%d\t|%d\t|%d\t|%d\t|%d\t|%d\t|%d\t|%d\t|%d\t|",bsc,da,ta,hra,splnc,gross,esi,pf,tax,net); 
     printf("\n-----------------------------------------------------------------------------------------");
 }
-void pntRcrdStd(struct emply *now,field[11])//Print Record Seleted
+void pntRcrdStd(struct emply *now,int field[11])//Print Record Seleted
 {
     int j,bsc,da,ta,hra,splnc,gross,esi,net,pf,tax,dash=1;
     printf("\n|");
